@@ -27,7 +27,7 @@ class FormValidator {
             this._formEl.querySelectorAll(this._inputSelector),
         );
         const buttonElement = formEl.querySelector(
-            this._submitButtonSelector;
+            this._submitButtonSelector
         );
 
         toggleButtonState(this._inputList);
