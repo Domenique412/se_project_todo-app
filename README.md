@@ -1,17 +1,17 @@
 # Simple Todo App
 
-Give a brief description of the project here. Feel free to give it a different name.
+This app allows you to set reminders for specific task, essentially a digitized todo list.
 
 ## Functionality
 
-Give a more detailed explanation of the project and its functionality.
+In the app you can create todo items and a date they are due. You can also check them off the list and then delete them later.
 
 ## Technology
 
-Give a description of the technologies and techniques used. Pictures, GIFs, or screenshots that detail the project features are recommended.
+Techniques used here were primarily in JavaScript and OOP.
 
 ## Deployment
 
-This project is deployed on GitHub Pages:
+-This webpage is deployed to GitHub Pages
 
-- ADD LINK HERE
+[Link to the project Deployment](https://github.com/Domenique412/se_project_todo-app.git)
