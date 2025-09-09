@@ -14,4 +14,4 @@ Techniques used here were primarily in JavaScript and OOP.
 
 -This webpage is deployed to GitHub Pages
 
-[Link to the project Deployment](https://github.com/Domenique412/se_project_todo-app.git)
+[Link to the project Deployment](https://domenique412.github.io/se_project_todo-app/)
