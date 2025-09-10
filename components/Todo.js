@@ -20,7 +20,6 @@ class Todo {
 
     }
 
-
     _generateCheckboxEl() {
 
         this._todoCheckboxEl = this._todoElement.querySelector(".todo__completed");

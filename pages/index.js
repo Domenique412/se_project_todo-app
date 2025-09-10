@@ -13,12 +13,21 @@ const todosList = document.querySelector(".todos__list");
 
 const openModal = (modal) => {
   modal.classList.add("popup_visible");
-};
+  document.addEventListener("keydown", handleEscapeKey);
+}
 
 const closeModal = (modal) => {
   modal.classList.remove("popup_visible");
+  document.removeEventListener("keydown", handleEscapeKey);
 };
 
+
+const handleEscapeKey = (evt) => {
+  if (evt.key === "Escape") {
+    const openModal = document.querySelector(".popup_visible");
+    closeModal(openModal);
+  }
+}
 // The logic in this function should all be handled in the Todo class.
 const generateTodo = (data) => {
   const todo = new Todo(data, "#todo-template");
@@ -42,16 +51,20 @@ addTodoForm.addEventListener("submit", (evt) => {
   const name = evt.target.name.value;
   const dateInput = evt.target.date.value;
 
-  // Create a date object and adjust for timezone
+
   const date = new Date(dateInput);
   date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
 
 
   const id = uuidv4();
   const values = { name, date, id };
-  const todo = generateTodo(values);
-  todosList.append(todo);
+  const renderTodo = (item) => {
+    const todo = generateTodo(item);
+    todosList.append(todo);
+  };
+  renderTodo(values);
   newTodoValidator.resetValidation();
+  closeModal(addTodoPopup);
 });
 
 initialTodos.forEach((item) => {
