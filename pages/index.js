@@ -12,16 +12,26 @@ const addTodoCloseBtn = addTodoPopup.querySelector(".popup__close");
 const todoTemplate = document.querySelector("#todo-template");
 const todosList = document.querySelector(".todos__list");
 
+
+
+const generateTodo = (data) => {
+  const todo = new Todo(data, "#todo-template");
+  const todoElement = todo.getView();
+
+  return todoElement;
+};
+
+
 const section = new Section({
-  items: []; //pass initial todos
-  renderer: () => {
-    //Generate todo item
-    //Add to the todo list
+  items: initialTodos,
+  renderer: (item) => {
+    const todoElement = generateTodo(item);
+    section.addItems(todoElement);
   },
-  containerSelector: ".todo__list";
+  containerSelector: ".todos__list"
 });
 
-//call section instance's renderItems method
+section.renderItems();
 
 
 const openModal = (modal) => {
@@ -41,15 +51,7 @@ const handleEscapeKey = (evt) => {
     closeModal(openModal);
   }
 }
-// The logic in this function should all be handled in the Todo class.
-const generateTodo = (data) => {
-  const todo = new Todo(data, "#todo-template");
-  const todoElement = todo.getView();
 
-
-
-  return todoElement;
-};
 
 addTodoButton.addEventListener("click", () => {
   openModal(addTodoPopup);
@@ -83,10 +85,6 @@ const renderTodo = (item) => {
 
 };
 
-
-initialTodos.forEach((item) => {
-  renderTodo(item);
-});
 
 
 const newTodoValidator = new FormValidator(validationConfig, addTodoForm);
