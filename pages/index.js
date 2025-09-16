@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'https://jspm.dev/uuid';
-import { initialTodos, validationConfig } from "../utils/constants.js";
-import Todo from "../components/Todo.js";
-import FormValidator from "../components/FormValidator.js";
+import { initialTodos, validationConfig } from '../utils/constants.js';
+import Todo from '../components/Todo.js';
+import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import TodoCounter from '../components/TodoCounter.js';
@@ -44,7 +44,10 @@ function handleCheck(completed) {
 };
 
 function handleDelete(completed) {
-  todoCounter.updateTotal(false, completed);
+  todoCounter.updateTotal(false);
+  if (completed) {
+    todoCounter.updateCompleted(false);
+  }
 }
 
 
@@ -60,7 +63,7 @@ const section = new Section({
   items: initialTodos,
   renderer: (item) => {
     const todoElement = generateTodo(item);
-    section.addItems(todoElement);
+    section.addItem(todoElement);
   },
   containerSelector: ".todos__list"
 });
@@ -72,27 +75,10 @@ addTodoButton.addEventListener("click", () => {
 });
 
 
-// addTodoForm.addEventListener("submit", (evt) => {
-//   evt.preventDefault();
-//   const name = evt.target.name.value;
-//   const dateInput = evt.target.date.value;
-
-
-//   const date = new Date(dateInput);
-//   date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
-
-
-//   const id = uuidv4();
-//   const values = { name, date, id };
-//   renderTodo(values);
-
-//   newTodoValidator.resetValidation();
-//   closeModal(addTodoPopupEl);
-// });
-
 const renderTodo = (item) => {
-  const todo = generateTodo(item);
-  todosList.append(todo);
+  const todoElement = generateTodo(item);
+  section.addItem(todoElement);
+
 
 };
 

@@ -7,7 +7,6 @@ class TodoCounter {
         this._completed = todos.filter((todo) => todo.completed).length;
         this._updateText();
 
-        console.log(this._completed);
     }
 
 
@@ -17,19 +16,13 @@ class TodoCounter {
     };
 
 
-    updateTotal = (increment, isCompleted) => {
+    updateTotal = (increment) => {
         this._total += increment ? 1 : -1;
-        if (isCompleted) {
-            this._completed += increment ? 1 : -1;
-
-        }
         this._updateText();
     };
 
-    // Call the method to update the text content
     _updateText() {
-        // Sets the text content of corresponding text element.  
-        // Call this in the constructor, and whenever the counts get updated.
+
         this._element.textContent = `Showing ${this._completed} out of ${this._total} completed`;
     }
 }

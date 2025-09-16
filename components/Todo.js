@@ -18,7 +18,7 @@ class Todo {
 
             this._data.completed = !this._data.completed;
             this._handleCheck(this._data.completed);
-            console.log(this._data.completed);
+
 
         });
 
